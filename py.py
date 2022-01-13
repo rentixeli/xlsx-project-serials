@@ -53,6 +53,8 @@ def main():
 		ws1.title="Sheet1"
 		ws1['A1'] = "Serial Number"
 		ws1['B1'] = "Main GL"
+		ws1['C1'] = "*16"
+		ws1['D1'] = "Blue"
 		num = 0
 		for i in range(2, len(filelist)+2):
 			cell = 'A' + str(i)
@@ -60,9 +62,40 @@ def main():
 			ws1[cell] = filenamm[:-5]
 			num += 1
 		num = 0
+		summ = 0
 		for i in range(2, len(values)+2):
 			cell = 'B' + str(i)
 			ws1[cell] = values[num]
+			summ += int(values[num])
+			num += 1
+		cell = 'B' + str(len(values)+2)
+		ws1[cell] = summ / len(values)
+
+		num = 0
+		summ = 0
+		for i in range(2, len(values)+2):
+			cell = 'C' + str(i)
+			dub = int(values[num]) * 16
+			ws1[cell] = dub
+			summ += dub
+			num += 1
+
+		cell = 'C' + str(len(values)+2)
+		ws1[cell] = summ / len(values)
+
+
+		dub = 0
+		for i in range(2, len(values)+2):
+			cell = 'D' + str(i)
+			nam = 'C' + str(i)
+			val = ws1[nam]._value
+			nam2 = 'C' + str(len(values)+2)
+			val2 = ws1[nam2]._value
+			dub = val - val2
+			dub = dub / val2
+			dub = dub * 100
+
+			ws1[cell] = dub
 			num += 1
 		pre.save(filename = dest)
 
@@ -91,6 +124,8 @@ def main():
 		ws1.title="Sheet1"
 		ws1['A1'] = "Serial Number"
 		ws1['B1'] = "Main GL"
+		ws1['C1'] = "*16"
+		ws1['D1'] = "Blue"
 		num = 0
 		for i in range(2, len(filelist)+2):
 			cell = 'A' + str(i)
@@ -101,6 +136,33 @@ def main():
 		for i in range(2, len(values)+2):
 			cell = 'B' + str(i)
 			ws1[cell] = values[num]
+			num += 1
+
+		num = 0
+		summ = 0
+		for i in range(2, len(values)+2):
+			cell = 'C' + str(i)
+			dub = int(values[num]) * 16
+			ws1[cell] = dub
+			summ += dub
+			num += 1
+
+		cell = 'C' + str(len(values)+2)
+		ws1[cell] = summ / len(values)
+
+
+		dub = 0
+		for i in range(2, len(values)+2):
+			cell = 'D' + str(i)
+			nam = 'C' + str(i)
+			val = ws1[nam]._value
+			nam2 = 'C' + str(len(values)+2)
+			val2 = ws1[nam2]._value
+			dub = val - val2
+			dub = dub / val2
+			dub = dub * 100
+
+			ws1[cell] = dub
 			num += 1
 		post.save(filename = dest)
 
@@ -134,7 +196,11 @@ def main():
 		ws1.title="Sheet1"
 		ws1['A1'] = "Serial Number"
 		ws1['B1'] = "Pre"
-		ws1['C1'] = "Post"
+		ws1['C1'] = "Pre Green"
+		ws1['D1'] = "Pre Blue"
+		ws1['E1'] = "Post"
+		ws1['F1'] = "Post Green"
+		ws1['G1'] = "Post Blue"
 		num = 0
 		for i in range(2, len(filelist)+2):
 			cell = 'A' + str(i)
@@ -142,14 +208,73 @@ def main():
 			ws1[cell] = filenamm[:-5]
 			num += 1
 		num = 0
+		summ = 0
 		for i in range(2, len(values)+2):
 			cell = 'B' + str(i)
 			ws1[cell] = values[num]
+			summ += int(values[num])
 			num += 1
+		cell = 'B' + str(len(values)+2)
+		ws1[cell] = summ / len(values)
+
 		num = 0
-		for i in range(2, len(values2)+2):
+		summ = 0
+		for i in range(2, len(values)+2):
 			cell = 'C' + str(i)
-			ws1[cell] = values2[num]
+			dub = int(values[num]) * 16
+			ws1[cell] = dub
+			summ += dub
+			num += 1
+
+		cell = 'C' + str(len(values)+2)
+		ws1[cell] = summ / len(values)
+
+
+		dub = 0
+		for i in range(2, len(values)+2):
+			cell = 'D' + str(i)
+			nam = 'C' + str(i)
+			val = ws1[nam]._value
+			nam2 = 'C' + str(len(values)+2)
+			val2 = ws1[nam2]._value
+			dub = val - val2
+			dub = dub / val2
+			dub = dub * 100
+
+			ws1[cell] = dub
+			num += 1
+
+		num = 0
+		for i in range(2, len(values)+2):
+			cell = 'E' + str(i)
+			ws1[cell] = values[num]
+			num += 1
+
+		num = 0
+		summ = 0
+		for i in range(2, len(values)+2):
+			cell = 'F' + str(i)
+			dub = int(values[num]) * 16
+			ws1[cell] = dub
+			summ += dub
+			num += 1
+
+		cell = 'F' + str(len(values)+2)
+		ws1[cell] = summ / len(values)
+
+
+		dub = 0
+		for i in range(2, len(values)+2):
+			cell = 'G' + str(i)
+			nam = 'F' + str(i)
+			val = ws1[nam]._value
+			nam2 = 'F' + str(len(values)+2)
+			val2 = ws1[nam2]._value
+			dub = val - val2
+			dub = dub / val2
+			dub = dub * 100
+
+			ws1[cell] = dub
 			num += 1
 		alls.save(filename = dest)
 
@@ -159,5 +284,10 @@ def main():
 	else:
 		print('I don\'t know.. try again..')
 		main()
+
+
+
+
+
 
 main()
